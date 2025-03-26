@@ -34,7 +34,7 @@ const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
 
 client.on("ready", () => {
 	client.user.setPresence({
-		activities: [{ name: "with proxies", type: ActivityType.Playing }],
+		activities: [{ name: "KittenGames", type: ActivityType.Playing }],
 		status: "online"
 	});
 })
@@ -52,9 +52,9 @@ client.on('interactionCreate', async interaction => {
 
 		var panelEmbed = new EmbedBuilder()
 			.setColor(0x004953)
-			.setTitle("Cog Dispenser")
-			.setDescription("Click the button below to get a new proxy link")
-			.setFooter({ text: "Made by Nebelung", iconURL: "https://avatars.githubusercontent.com/u/81875430" })
+			.setTitle("KittenDispenser")
+			.setDescription("Click the button below to get a new KittenGames link")
+			.setThumbnail('https://files.catbox.moe/j35mmi.png')
 
         await interaction.reply({ embeds: [ panelEmbed ], components: [ row ] })
 	} else if (interaction.commandName == "admin") {
@@ -82,7 +82,6 @@ client.on('interactionCreate', async interaction => {
 			.setColor(0x004953)
 			.setTitle("Admin Panel")
 			.setDescription("Admin commands for the proxy bot")
-			.setFooter({ text: "Made by Nebelung", iconURL: "https://avatars.githubusercontent.com/u/81875430" })
 
         await interaction.reply({ embeds: [ panelEmbed ], components: [ row ] })
 	}
@@ -112,14 +111,13 @@ client.on('interactionCreate', async interaction => {
 
 			var proxyEmbed = new EmbedBuilder()
 				.setColor(0x004953)
-				.setTitle("Cog Dispenser")
+				.setTitle("KittenDispenser")
 				.setDescription("Enjoy your new link")
 				.addFields(
 					{ name: "URL", value: randomLink },
 					{ name: "Remaining", value: remaining },
 					{ name: "Notice", value: "If the link is blocked click the report button below" }
 				)
-				.setFooter({ text: "Made by Nebelung", iconURL: "https://avatars.githubusercontent.com/u/81875430" })
 			
 			var row = new ActionRowBuilder()
 				.addComponents(
@@ -220,7 +218,6 @@ client.on('interactionCreate', async interaction => {
 				.setColor(0x004953)
 				.setTitle("Links")
 				.setDescription("Every link in the database!\n```\n" + allLinks + "\n```")
-				.setFooter({ text: "Made by Nebelung", iconURL: "https://avatars.githubusercontent.com/u/81875430" })
 			return interaction.reply({ embeds: [ linksEmbed ], ephemeral: true })
 		}
 	} else if (interaction.isModalSubmit()) {
@@ -233,9 +230,7 @@ client.on('interactionCreate', async interaction => {
 					{ name: "URL", value: interaction.message.embeds[0].data.fields[0].value },
 					{ name: "Reason", value: interaction.fields.getTextInputValue("reportReason") },
 					{ name: "User", value: "<@" + interaction.user.id + ">" }
-				)
-				.setFooter({ text: "Made by Nebelung", iconURL: "https://avatars.githubusercontent.com/u/81875430" })
-			
+				)			
 			var row = new ActionRowBuilder()
 				.addComponents(
 					new ButtonBuilder()
@@ -258,7 +253,6 @@ client.on('interactionCreate', async interaction => {
 					{ name: "Response", value: interaction.fields.getTextInputValue("closeReportReason") },
 					{ name: "Closed By", value: "<@" + interaction.user.id + ">" }
 				)
-				.setFooter({ text: "Made by Nebelung", iconURL: "https://avatars.githubusercontent.com/u/81875430" })
 			user.send({ embeds: [ closedReportEmbed ] })
 			})
 			interaction.message.delete()
