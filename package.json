@@ -3,7 +3,7 @@
     "discord.js": "^14.10.2",
     "dotenv": "^16.0.2"
   },
-  "name": "cog-dispenser",
+  "name": "kitten-dispenser",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
